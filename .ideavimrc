@@ -1,20 +1,13 @@
+set showmode
 set so=5 " Keep few lines visible when scrolling
 set incsearch
 set number relativenumber " Set relative line numbers
-set timeoutlen=400
-set showmode
-
-"Whic key
-set which-key
-set notimeout
-let g:WhichKeyDesc_windows_maximize = "<leader>wm maximize"
+set timeoutlen=40
 
 
 """ Editing and Reloading the Config
 set clipboard+=unnamed
 set clipboard+=ideaput
-nnoremap \e :e ~/.ideavimrc<CR>
-nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 "" Plugins  --------------------------------
 """ Surround Plugin  --------------------------------
@@ -54,9 +47,8 @@ Plug 'tommcdo/vim-exchange'
 "   easy-motion-f Search forward
 " See https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands for details
 Plug 'easymotion/vim-easymotion'
-map <Leader>F <Plug>(easymotion-s)
-map <Leader>f <Plug>(easymotion-f)
-
+map s <Plug>(easymotion-s)
+map S <Plug>(easymotion-f)
 """ NERDTree plugin  --------------------------------
 " Emulates NERDTree
 " Basic Commands:
@@ -136,6 +128,7 @@ nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
 
 """ Terminal
 nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <c-g> :action ActivateCommitToolWindow<CR>
 
 """ Navigation
 nnoremap <c-\> :action SplitVertically<CR>
@@ -196,6 +189,8 @@ set incsearch
 nnoremap <c-/> :action FindInPath<CR>
 nnoremap <c-a> :action GotoAction<CR>
 nnoremap <c-f> :action GotoFile<CR>
+sethandler <c-p> a:vim
+nnoremap <c-p> :action SelectInProjectView<CR>
 nnoremap <leader>u :action FindUsages<CR>
 
 "nnoremap <leader>s :action GotoRelated<CR>
@@ -203,13 +198,16 @@ nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <leader>b :action ShowNavBar<CR>
 nnoremap <c-s> :action FileStructurePopup<CR>
 nnoremap gs :action GotoSymbol<CR>
-"nnoremap gc :action GotoClass<CR>
+nnoremap <leader>cd :action RenameElement<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gp :action GotoSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
+nnoremap \ :action ShowErrorDescription<CR>
+
+""" Git
 
 """ Tool windows
 nnoremap <M-p> :action JumpToLastWindow<CR>
